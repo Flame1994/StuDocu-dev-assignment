@@ -1,6 +1,8 @@
 # StuDocu Interactive Q&A
 
-ʕ•ᴥ•ʔﾉ Welcome! This assignment handles Laravel's interactive console.
+ʕ•ᴥ•ʔﾉ Welcome! This assignment tests Laravel's interactive console. A Q&A system was created
+where the user can add questions and their answers. Once added the user can view and answer these questions
+with a progress bar showing the user's progress through the answers.
 
 ## Requirements
 There are a few things needed in order to setup this project.
@@ -50,3 +52,8 @@ To test the assignment, simply run the command
 php artisan qanda:interactive
 ```
 You will be prompted for the relevant information and taken through the steps.
+
+To reset your answers, run the following command
+```jshelllanguage
+php artisan qanda:reset
+```
