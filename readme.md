@@ -1,33 +1,52 @@
-# Q/A app made with Laravel and the Artisan Console
+# StuDocu Interactive Q&A
 
-The purpose of the exercise is to see how comfortable you are with a Laravel based interactive console app. We have done a bit of work for you. If you use this template project to make a new repository, clone the project to your local, run `composer install`, and then run `php artisan qanda:interactive`, the command will be started. In this command, create an event loop and implement the following features:
+ʕ•ᴥ•ʔﾉ Welcome! This assignment handles Laravel's interactive console.
 
-- The initial interaction should allow you to choose between adding questions and answers and viewing previously entered answers.
+## Requirements
+There are a few things needed in order to setup this project.
+- PHP
+- SQLite
+- **[Composer](https://getcomposer.org/)**
+- **[Laravel](https://laravel.com/docs/8.x/installation)**
+- A server to host it on (whichever you prefer)
 
-#### (Optional) Environment
-To make the PHP and MySQL installation easier, we have included a docker-compose file that runs a
-MySQL DB and a PHP container. To use it, run `docker-compose up -d` in the project folder, then use
-`docker exec -it <name_of_php_container> sh` to enter the PHP container.
+## Installation
+First, clone this repository and navigate to the directory where it has been downloaded. Follow the instructions below:
 
-There is no requirement whatsoever to use this system, it is only included for your ease of use.
+- Run the Composer installation
+```jshelllanguage
+$ composer install
+```
+- Update the `.env` file with all needed information, specifically the database details.
+- Migrate the database
+```jshelllanguage
+$ php artisan migrate
+```
 
-### Creating Questions
-- Upon choosing the option to add a question, the user will be prompted to give a question and the answer to that question.
-- Upon giving a question and answer, this must be stored in the database. Use migrations to create the DB tables.
+## Implementation
 
-### Practising Questions
-- Upon choosing to view the questions, the user will be prompted to choose from the previously given questions which one he wants to practice.
-- Upon choosing to practice a question, the user must fill in the right answer for the question, which will be checked against the previously given answer.
-- Upon answering a question, the user is returned to the list of all questions, and sees his progress for each question.
-- Upon completing all questions, an overview of the users final progress is given.
-- We strongly prefer saving the users' progress in the DB.
+### Summary
+**Laravel**, which is a MVC (Model View Controller) framework is used in this implementation, alongside a **Repository** design pattern. A base abstract command
+class is created which handles the application flow of the other commands. The Commands
+interact with the models through the repositories.
 
-### Extra
-- Every step must have an option to go back one step.
-- Use the DB, and use Laravel best practices to approach it.
-- Allow the user to exit the interactive console with an option at every point.
+### Models
+Using the Eloquent ORM, models can be created that map directly to database tables. For our implementation we have the **Question** and **Answer** Models.
 
-### I really want this job
-- Make a new console command to be run with `php artisan qanda:reset` that removes all previous progresses.
-- Write (a) unit test(s).
+### Repositories
+A Repository is an abstraction of the data layer and a centralised way of handling our models. 
+The idea with this pattern is to have a generic abstract way for the commands to work with the data 
+layer without being bothered with if the implementation is towards a local database or towards an online API.
 
+## Testing
+You can test the commands as well. You can view them in the `tests/Unit` folder. Navigate to your project folder and run the following command to run the tests:
+```jshelllanguage
+phpunit tests/Unit
+```
+
+## Testing the assignment
+To test the assignment, simply run the command
+```jshelllanguage
+php artisan qanda:interactive
+```
+You will be prompted for the relevant information and taken through the steps.
