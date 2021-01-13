@@ -24,7 +24,7 @@ class QAndA extends QAndACommand
     /**
      * Info constants.
      */
-    protected const INFO_WELCOME = 'Welcome! I\'m Sprinkles and I will be your learning guide! ʕ •ᴥ•ʔゝ';
+    protected const INFO_WELCOME = 'Welcome! I\'m Sprinkles and I will be your guide! ʕ •ᴥ•ʔゝ';
 
     /**
      * The name and signature of the console command.
